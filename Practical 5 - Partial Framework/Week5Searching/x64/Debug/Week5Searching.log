@@ -1,0 +1,4 @@
+﻿  Search.cpp
+C:\Users\2601663\source\repos\Practical 5 - Partial Framework\Practical 5 - Partial Framework\Week5Searching\Search.cpp(77,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\2601663\source\repos\Practical 5 - Partial Framework\Practical 5 - Partial Framework\Week5Searching\Search.cpp(89,9): warning C4552: '+': result of expression not used
+  Week5Searching.vcxproj -> C:\Users\2601663\source\repos\Practical 5 - Partial Framework\Practical 5 - Partial Framework\x64\Debug\Week5Searching.exe
