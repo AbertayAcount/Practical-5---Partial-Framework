@@ -86,7 +86,7 @@ int BinarySearch(const std::vector<Movie>& movies, int targetID)
 		}
 		else if (movies[mid].id > targetID)
 		{
-			high + 1;
+			high = mid + 1;
 		}
 		else 
 		{
