@@ -59,7 +59,10 @@ std::vector<Movie> generateMovieDatabase(int numMovies)
 int LinearScan(const std::vector<Movie>& movies, int targetID)
 {
 	// TODO: Assessed [0.5]
-
+	/*Int LinearScan(const std::vector<Movie>& movies, int targetID) [0.5] uses a
+naïve O(n) search algorithm to search all element returning the index of the
+movie with the targetID in the movies vector, or -1 if it cannot find the element.
+You can assume that the vector will be sorted*/
 	for (int i = 0; i < movies.size(); i++) 
 	{
 		if (movies[i].id == targetID) 
@@ -73,7 +76,10 @@ int LinearScan(const std::vector<Movie>& movies, int targetID)
 int BinarySearch(const std::vector<Movie>& movies, int targetID)
 {
 	// TODO: Assessed [1.0]
-
+	/*Int BinarySearch(const std::vector<Movie>& movies, int targetID) [1.0] uses
+an informed search O(log(n)) that only works on sorted data, returning -1 if an
+element is not in the list. It will also return -1 if it finds an element in the vector
+that is unsorted. It does not need to check that the full vector is sorted*/
 	int low = 0, high = movies.size() - 1;
 
 	while (low <= high) 
@@ -99,7 +105,9 @@ int BinarySearch(const std::vector<Movie>& movies, int targetID)
 std::unordered_map<int, Movie> BuildMovieMap(const std::vector<Movie>& movies)
 {
 	// TODO: assessed [0.5]
-
+	/*std::unordered_map<int, Movie> BuildMovieMap(const std::vector<Movie>&
+movies) [0.5] transforms a vector of movies into an unsorted map of {<int> id -
+<Movie> movie} pairs.*/
 	std::unordered_map<int, Movie> movieMap;
 	movieMap.reserve(movies.size());
 
@@ -115,7 +123,10 @@ std::unordered_map<int, Movie> BuildMovieMap(const std::vector<Movie>& movies)
 Movie MapSearch(std::unordered_map<int, Movie>& movieMap, int targetID)
 {
 	// TODO: assessed [0.5]
-	
+	/*Movie MapSearch(std::unordered_map<int, Movie>& movieMap, int targetID)
+[0.5] if the id exists as a key, returns the associated movie object or returns a
+Movie object with an id of -1 if there is no object with the target id. Note: this
+method should not add new elements to the map only failed searche*/
 	auto it = movieMap.find(targetID);
 	if (it != movieMap.end()) 
 	{
@@ -137,7 +148,10 @@ Movie MapSearch(std::unordered_map<int, Movie>& movieMap, int targetID)
 double timeLinearScan(const std::vector<Movie>& movies, const std::vector<int>& targetIDs)
 {
 	// TODO: Assessed [0.5]
-
+	/*double timeLinearScan(const std::vector<Movie>& movies, const
+std::vector<int>& targetIDs) [0.5] Uses the linear scan implementation and
+times how long it takes to search the provided vector for each of the target IDs
+in turn returning as a double the total time taken in nanoseconds*/
 	auto startTime = std::chrono::high_resolution_clock::now();
 
 	volatile int searchResult = -1;
@@ -154,7 +168,12 @@ double timeLinearScan(const std::vector<Movie>& movies, const std::vector<int>& 
 std::pair<double, double> timeBinarySearch(const std::vector<Movie>& movies, const std::vector<int>& targetIDs)
 {
 	// TODO: Assessed [1.0]
-
+	/*std::pair<double,double> timeBinarySearch(const std::vector<Movie>&
+movies, const std::vector<int>& targetIDs) [1.0] Stores the time taken in
+nanoseconds to sort the vector using the provided getSortedCopy function as a
+double as the first element of the pair. As with timeLinearScan, returns the total
+time to search for each element in targetIDs in nanoseconds as a double, stored
+as the second element of the pair.*/
 	auto sortStartTime = std::chrono::high_resolution_clock::now();
 	const std::vector<Movie> sortedMovies = getSortedCopy(movies);
 	auto sortEndTime = std::chrono::high_resolution_clock::now();
@@ -179,7 +198,10 @@ std::pair<double, double> timeBinarySearch(const std::vector<Movie>& movies, con
 std::pair<double, double> timeMapSearch(const std::vector<Movie>& movies, const std::vector<int>& targetIDs)
 {
 	// TODO: Assessed [1.0]
-
+	/*std::pair<double, double> timeMapSearch(const std::vector<Movie>& movies,
+const std::vector<int>& targetIDs) [1.0] As with timeBinarySearch(), but
+stores time to generate map with assessed BuildMovieMap function and then
+time to search for all elements in targetIDs.*/
 	auto mapStartTime = std::chrono::high_resolution_clock::now();
 	std::unordered_map<int, Movie> movieMap = BuildMovieMap(movies);
 	auto mapEndTime = std::chrono::high_resolution_clock::now();
